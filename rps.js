@@ -87,12 +87,14 @@ function game() {
         if (round === undefined) {
             return alert('You canceled the game :(')
         } else if (round === 0) {
+            alert(`Player score: ${playerScore} Computer Score: ${computerScore}`)
             continue;
         } else if (round === 1) {
             playerScore += 1;
         } else {
             computerScore += 1;
         }
+        alert(`Player score: ${playerScore} Computer Score: ${computerScore}`)
     }
     if (playerScore === computerScore) {
         return alert('You tied! haha')
