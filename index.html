@@ -1,14 +1,22 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, paper, scissors</title>
 </head>
+
 <body style="background-color: black;">
-    <div id='startButtonDiv'>
-    <button id='startButton'>Start rock paper scissors!</button>
+    <div class="playGameDiv">
+        <div class="playGameDiv">
+            <p class="scoreCard" id="playerScore"></p>
+            <p class="scoreCard" id="computerScore"></p>
+        </div>
+        <div class="playGameDiv"><button class="selectorButton" id="rockBtn">ROCK</button><button class="selectorButton"
+                id="paperBtn">PAPER</button><button class="selectorButton" id="scissorsBtn">SCISSORS</button></div>
     </div>
     <script src="./rps.js"></script>
 </body>
+
 </html>

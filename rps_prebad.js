@@ -1,6 +1,4 @@
 /*********************************************BELOW IS FRONT END CODE***************************************************/
-let playerScore = 0;
-let computerScore = 0;
 const startButtonContainer = document.getElementById('startButtonDiv');
 const startButton = document.getElementById('startButton');
 
@@ -19,13 +17,13 @@ scorecardDiv.classList.add('playGameDiv');
 const playerScoreCard = document.createElement('p');
 playerScoreCard.classList.add('scoreCard');
 playerScoreCard.setAttribute('id', 'playerScore');
-playerScoreCard.textContent = `Player Score: ${playerScore}`;
+playerScoreCard.textContent = `Player Score: ${game.playerScore}`;
 scorecardDiv.appendChild(playerScoreCard);
 
 const computerScoreCard = document.createElement('p');
 computerScoreCard.classList.add('scoreCard');
 computerScoreCard.setAttribute('id', 'computerScore');
-computerScoreCard.textContent = `Computer Score: ${computerScore}`;
+computerScoreCard.textContent = `Computer Score: ${game.computerScore}`;
 scorecardDiv.appendChild(computerScoreCard);
 
 playGameDiv.appendChild(scorecardDiv);
@@ -68,7 +66,7 @@ startButton.addEventListener('click', () => {
 
 
 
-// YOU NEED TO FIX THE INITIAL SELECTION STUFF TO WORK WITH THE FRONT END 
+
 
 
 /*********************************************BELOW IS BACK END CODE***************************************************/
@@ -83,78 +81,65 @@ function computerSelectionFunc() {
 
 /* function named playerSelection: let player choose either rock, paper or scissors 
 (MAKE SURE THIS IS CASE INSENSITIVE) */
-
-
-let playerSelection;
-
-function paperButtonPressed() {
-    playerSelection = 'rock';
-    console.log('rockButton clicked');
-    playRound();
-}
-
-function rockButtonPressed() {
-    playerSelection = 'rock';
-    console.log('rockButton clicked');
-    playRound();
-}
-
-const rockButtonSelector = document.querySelector('#rockBtn');
-rockButtonSelector.addEventListener('click', () => {
-    playerSelection = 'rock';
-    console.log('rockButton clicked');
-    playRound();
-})
-
-paperButton.addEventListener('click', () => {
-    playerSelection = 'paper';
-    console.log('paperButton clicked');
-    playRound();
-});
-
-scissorsButton.addEventListener('click', () => {
-    playerSelection = 'scissors';
-    console.log('scissorsButton clicked');
-    return playRound();
-});
-
+function playerSelectionFunc() {
+    let selection;
+    let initialSelection = prompt('rock, paper, or scissors?');
+    try { selection = initialSelection.toLowerCase(); }
+    catch (selection) {
+        // log is used to skip ahead and give small amount of feedback.
+        return console.log('Canceled selection by user');
+    }
+    if (selection === 'rock' || selection === 'paper' || selection === 'scissors') {
+        return selection;
+    } else {
+        alert('You have not picked a valid selection :( Try again!');
+        return playerSelection();
+    }
+};
 
 /* function named playRound: Takes two parameters `playerSelection` and `computerSelection`
 then returns a string letting play know if they won or lost (console.log) */
 function playRound(playerSelection, computerSelection) {
+    playerSelection = playerSelectionFunc();
     computerSelection = computerSelectionFunc();
 
     if (playerSelection === undefined) {
         return undefined;
     }
 
+    /* return values:
+     `0` === Tied game.
+     `1` === Player won.
+     `2` === Computer won.
+    */
+
     if (playerSelection === computerSelection) {
-        return;
+        alert('Round tied!');
+        return 0;
     }
     switch (playerSelection) {
         case 'rock':
             if (computerSelection === 'scissors') {
-                console.log('player won');
-                return playerScore += 1;
+                return 1;
             } else {
-                console.log('computer won');
-                return computerScore += 1;
+                alert('Computer won!')
+                return 2;
             }
         case 'paper':
             if (computerSelection === 'rock') {
-                console.log('player won');
-                return playerScore += 1;
+                alert('Player won!')
+                return 1;
             } else {
-                console.log('computer won');
-                return computerScore += 1;
+                alert('Computer won!')
+                return 2;
             }
         case 'scissors':
             if (computerSelection === 'paper') {
-                console.log('computer won');
-                return playerScore += 1;
+                alert('Player won!')
+                return 1;
             } else {
-                console.log('computer won');
-                return computerScore += 1;
+                alert('Computer won!')
+                return 2;
             }
         default:
             return alert('Input bad >:(')
@@ -162,7 +147,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 /* function called game(): calls function named playRound 5 times.
-also keeps score and declares a winner.
+also keeps score and declares a winner. */
 function game() {
     let playerScore = 0;
     let computerScore = 0;
@@ -171,19 +156,23 @@ function game() {
         let round = playRound();
 
         // If user cancels the game the if statement will run
-        if (round === 0) {
+        if (round === undefined) {
+            return alert('You canceled the game :(')
+        } else if (round === 0) {
+            alert(`Player score: ${playerScore} Computer Score: ${computerScore}`)
             continue;
         } else if (round === 1) {
             playerScore += 1;
         } else {
             computerScore += 1;
         }
+        alert(`Player score: ${playerScore} Computer Score: ${computerScore}`)
     }
     if (playerScore === computerScore) {
         return alert('You tied! haha')
     }
     return playerScore > computerScore ? alert('Player won the game!') : alert('Computer won the game!');
-} */
+}
 
 
 
