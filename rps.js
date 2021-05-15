@@ -1,3 +1,76 @@
+/*********************************************BELOW IS FRONT END CODE***************************************************/
+const startButtonContainer = document.getElementById('startButtonDiv');
+const startButton = document.getElementById('startButton');
+
+
+// Below is page content for when the game starts
+
+// main div start
+const playGameDiv = document.createElement('div');
+playGameDiv.classList.add('playGameDiv');
+playGameDiv.setAttribute('style', 'background-color: pink; border: 3px solid black');
+
+// scorecard div start
+const scorecardDiv = document.createElement('div');
+scorecardDiv.classList.add('playGameDiv');
+
+const playerScoreCard = document.createElement('p');
+playerScoreCard.classList.add('scoreCard');
+playerScoreCard.setAttribute('id', 'playerScore');
+playerScoreCard.textContent = `Player Score: ${game.playerScore}`;
+scorecardDiv.appendChild(playerScoreCard);
+
+const computerScoreCard = document.createElement('p');
+computerScoreCard.classList.add('scoreCard');
+computerScoreCard.setAttribute('id', 'computerScore');
+computerScoreCard.textContent = `Computer Score: ${game.computerScore}`;
+scorecardDiv.appendChild(computerScoreCard);
+
+playGameDiv.appendChild(scorecardDiv);
+// scorecard div end
+
+// Game buttons div start
+const gameDiv = document.createElement('div');
+gameDiv.classList.add('playGameDiv');
+
+const rockButton = document.createElement('button');
+rockButton.classList.add('selectorButton');
+rockButton.setAttribute('id', 'rockBtn');
+rockButton.textContent = 'ROCK';
+gameDiv.appendChild(rockButton);
+
+const paperButton = document.createElement('button');
+paperButton.classList.add('selectorButton');
+paperButton.setAttribute('id', 'paperBtn');
+paperButton.textContent = 'PAPER';
+gameDiv.appendChild(paperButton);
+
+const scissorsButton = document.createElement('button');
+scissorsButton.classList.add('selectorButton');
+scissorsButton.setAttribute('id', 'scissorsBtn');
+scissorsButton.textContent = 'SCISSORS';
+gameDiv.appendChild(scissorsButton);
+
+playGameDiv.appendChild(gameDiv);
+// Game buttons div end
+
+// This will replace the start game button with the actual game :)
+const clone = playGameDiv.cloneNode(true);
+startButton.addEventListener('click', () => {
+    startButtonContainer.replaceWith(clone);
+});
+
+
+// Below is code linking front end to the backend
+
+
+
+
+
+
+
+/*********************************************BELOW IS BACK END CODE***************************************************/
+
 // function named computerSelection: Will randomly return rock, paper, or scissors.
 // Uses Math.floor() to round down and Math.random() to select a random item in the list `rps`.
 function computerSelectionFunc() {
@@ -47,7 +120,6 @@ function playRound(playerSelection, computerSelection) {
     switch (playerSelection) {
         case 'rock':
             if (computerSelection === 'scissors') {
-                alert('Player won!')
                 return 1;
             } else {
                 alert('Computer won!')
