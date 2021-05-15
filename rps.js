@@ -58,15 +58,18 @@ playGameDiv.appendChild(gameDiv);
 const clone = playGameDiv.cloneNode(true);
 startButton.addEventListener('click', () => {
     startButtonContainer.replaceWith(clone);
+    game();
 });
 
 
 // Below is code linking front end to the backend
+rockButton.addEventListener('click', () => {
+    playerSelection === 'rock';
+})
 
 
 
-
-
+// YOU NEED TO FIX THE INITIAL SELECTION STUFF TO WORK WITH THE FRONT END 
 
 
 /*********************************************BELOW IS BACK END CODE***************************************************/
@@ -114,31 +117,31 @@ function playRound(playerSelection, computerSelection) {
     */
 
     if (playerSelection === computerSelection) {
-        alert('Round tied!');
         return 0;
     }
     switch (playerSelection) {
         case 'rock':
             if (computerSelection === 'scissors') {
+                console.log('player won');
                 return 1;
             } else {
-                alert('Computer won!')
+                console.log('computer won');
                 return 2;
             }
         case 'paper':
             if (computerSelection === 'rock') {
-                alert('Player won!')
+                console.log('player won');
                 return 1;
             } else {
-                alert('Computer won!')
+                console.log('computer won');
                 return 2;
             }
         case 'scissors':
             if (computerSelection === 'paper') {
-                alert('Player won!')
+                console.log('computer won');
                 return 1;
             } else {
-                alert('Computer won!')
+                console.log('computer won');
                 return 2;
             }
         default:
@@ -159,14 +162,12 @@ function game() {
         if (round === undefined) {
             return alert('You canceled the game :(')
         } else if (round === 0) {
-            alert(`Player score: ${playerScore} Computer Score: ${computerScore}`)
             continue;
         } else if (round === 1) {
             playerScore += 1;
         } else {
             computerScore += 1;
         }
-        alert(`Player score: ${playerScore} Computer Score: ${computerScore}`)
     }
     if (playerScore === computerScore) {
         return alert('You tied! haha')
