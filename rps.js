@@ -1,74 +1,25 @@
 /*********************************************BELOW IS FRONT END CODE***************************************************/
+// Create reset score button
+// Create 'Computer won / Player won / You tied!' output text every round
 let playerScore = 0;
 let computerScore = 0;
-const startButtonContainer = document.getElementById('startButtonDiv');
-const startButton = document.getElementById('startButton');
+let playerSelection;
+
+const playerScoreCard = document.querySelector('.playGameDiv p#playerScore')
+playerScoreCard.textContent = `Player Score: ${playerScore}`
+
+const computerScoreCard = document.querySelector('.playGameDiv p#computerScore')
+computerScoreCard.textContent = `Computer Score: ${playerScore}`
+
+const rockButton = document.querySelector('#rockBtn')
+rockButton.addEventListener('click')
+
+const paperButton = document.querySelector('#paperBtn')
 
 
-// Below is page content for when the game starts
-
-// main div start
-const playGameDiv = document.createElement('div');
-playGameDiv.classList.add('playGameDiv');
-playGameDiv.setAttribute('style', 'background-color: pink; border: 3px solid black');
-
-// scorecard div start
-const scorecardDiv = document.createElement('div');
-scorecardDiv.classList.add('playGameDiv');
-
-const playerScoreCard = document.createElement('p');
-playerScoreCard.classList.add('scoreCard');
-playerScoreCard.setAttribute('id', 'playerScore');
-playerScoreCard.textContent = `Player Score: ${playerScore}`;
-scorecardDiv.appendChild(playerScoreCard);
-
-const computerScoreCard = document.createElement('p');
-computerScoreCard.classList.add('scoreCard');
-computerScoreCard.setAttribute('id', 'computerScore');
-computerScoreCard.textContent = `Computer Score: ${computerScore}`;
-scorecardDiv.appendChild(computerScoreCard);
-
-playGameDiv.appendChild(scorecardDiv);
-// scorecard div end
-
-// Game buttons div start
-const gameDiv = document.createElement('div');
-gameDiv.classList.add('playGameDiv');
-
-const rockButton = document.createElement('button');
-rockButton.classList.add('selectorButton');
-rockButton.setAttribute('id', 'rockBtn');
-rockButton.textContent = 'ROCK';
-gameDiv.appendChild(rockButton);
-
-const paperButton = document.createElement('button');
-paperButton.classList.add('selectorButton');
-paperButton.setAttribute('id', 'paperBtn');
-paperButton.textContent = 'PAPER';
-gameDiv.appendChild(paperButton);
-
-const scissorsButton = document.createElement('button');
-scissorsButton.classList.add('selectorButton');
-scissorsButton.setAttribute('id', 'scissorsBtn');
-scissorsButton.textContent = 'SCISSORS';
-gameDiv.appendChild(scissorsButton);
-
-playGameDiv.appendChild(gameDiv);
-// Game buttons div end
-
-// This will replace the start game button with the actual game :)
-const clone = playGameDiv.cloneNode(true);
-startButton.addEventListener('click', () => {
-    startButtonContainer.replaceWith(clone);
-});
+const scissorsButton = document.querySelector('#scissorsBtn')
 
 
-// Below is code linking front end to the backend
-
-
-
-
-// YOU NEED TO FIX THE INITIAL SELECTION STUFF TO WORK WITH THE FRONT END 
 
 
 /*********************************************BELOW IS BACK END CODE***************************************************/
@@ -80,44 +31,6 @@ function computerSelectionFunc() {
     let selection = rps[Math.floor(Math.random() * rps.length)];
     return selection;
 };
-
-/* function named playerSelection: let player choose either rock, paper or scissors 
-(MAKE SURE THIS IS CASE INSENSITIVE) */
-
-
-let playerSelection;
-
-function paperButtonPressed() {
-    playerSelection = 'rock';
-    console.log('rockButton clicked');
-    playRound();
-}
-
-function rockButtonPressed() {
-    playerSelection = 'rock';
-    console.log('rockButton clicked');
-    playRound();
-}
-
-const rockButtonSelector = document.querySelector('#rockBtn');
-rockButtonSelector.addEventListener('click', () => {
-    playerSelection = 'rock';
-    console.log('rockButton clicked');
-    playRound();
-})
-
-paperButton.addEventListener('click', () => {
-    playerSelection = 'paper';
-    console.log('paperButton clicked');
-    playRound();
-});
-
-scissorsButton.addEventListener('click', () => {
-    playerSelection = 'scissors';
-    console.log('scissorsButton clicked');
-    return playRound();
-});
-
 
 /* function named playRound: Takes two parameters `playerSelection` and `computerSelection`
 then returns a string letting play know if they won or lost (console.log) */
