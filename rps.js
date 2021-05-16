@@ -1,24 +1,25 @@
 /*********************************************BELOW IS FRONT END CODE***************************************************/
 // Create reset score button
 // Create 'Computer won / Player won / You tied!' output text every round
-let playerScore = 0;
-let computerScore = 0;
-let playerSelection;
-
-const playerScoreCard = document.querySelector('.playGameDiv p#playerScore')
-playerScoreCard.textContent = `Player Score: ${playerScore}`
-
-const computerScoreCard = document.querySelector('.playGameDiv p#computerScore')
-computerScoreCard.textContent = `Computer Score: ${playerScore}`
+let playerChoice;
 
 const rockButton = document.querySelector('#rockBtn')
-rockButton.addEventListener('click')
+rockButton.addEventListener('click', () => {
+    playerChoice = 'rock';
+    playRound();
+})
 
 const paperButton = document.querySelector('#paperBtn')
-
+paperButton.addEventListener('click', () => {
+    playerChoice = 'paper';
+    playRound();
+})
 
 const scissorsButton = document.querySelector('#scissorsBtn')
-
+scissorsButton.addEventListener('click', () => {
+    playerChoice = 'scissors';
+    playRound();
+})
 
 
 
@@ -35,45 +36,57 @@ function computerSelectionFunc() {
 /* function named playRound: Takes two parameters `playerSelection` and `computerSelection`
 then returns a string letting play know if they won or lost (console.log) */
 function playRound(playerSelection, computerSelection) {
+    playerSelection = playerChoice;
     computerSelection = computerSelectionFunc();
+    
+
 
     if (playerSelection === undefined) {
+        console.log('Undefined :(');
         return undefined;
     }
 
     if (playerSelection === computerSelection) {
-        return;
+        console.log('You tied!');
+        return 0;
     }
     switch (playerSelection) {
         case 'rock':
             if (computerSelection === 'scissors') {
                 console.log('player won');
-                return playerScore += 1;
+                return 1;
             } else {
                 console.log('computer won');
-                return computerScore += 1;
+                return 2;
             }
         case 'paper':
             if (computerSelection === 'rock') {
                 console.log('player won');
-                return playerScore += 1;
+                return 1;
             } else {
                 console.log('computer won');
-                return computerScore += 1;
+                return 2;
             }
         case 'scissors':
             if (computerSelection === 'paper') {
                 console.log('computer won');
-                return playerScore += 1;
+                return 1;
             } else {
                 console.log('computer won');
-                return computerScore += 1;
+                return 2;
             }
         default:
             return alert('Input bad >:(')
     }
 }
+let playerScore = 0;
+let computerScore = 0;
 
+const playerScoreCard = document.querySelector('.playGameDiv p#playerScore')
+playerScoreCard.textContent = `Player Score: ${playerScore}`
+
+const computerScoreCard = document.querySelector('.playGameDiv p#computerScore')
+computerScoreCard.textContent = `Computer Score: ${computerScore}`
 /* function called game(): calls function named playRound 5 times.
 also keeps score and declares a winner.
 function game() {
