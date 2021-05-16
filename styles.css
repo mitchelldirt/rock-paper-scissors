@@ -1,0 +1,40 @@
+body {
+    background-color: lightpink;
+}
+
+img {
+    width: 130px;
+    height: 130px;
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 43%;
+    }
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.selectorButton {
+    margin: 0% 3% 0% 3%;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: end;
+    align-items: baseline;
+    position: relative;
+    top: 94vh;
+}
+
+.icon-link {
+    margin-left: 1%;
+}

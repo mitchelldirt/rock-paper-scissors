@@ -5,18 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, paper, scissors</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
-<body style="background-color: black;">
+<body>
     <div class="playGameDiv">
         <div class="playGameDiv">
             <p class="scoreCard" id="playerScore"></p>
             <p class="scoreCard" id="computerScore"></p>
         </div>
-        <div class="playGameDiv"><button class="selectorButton" id="rockBtn">ROCK</button><button class="selectorButton"
-                id="paperBtn">PAPER</button><button class="selectorButton" id="scissorsBtn">SCISSORS</button></div>
-    </div>
+        <div class="center" id="playGameDiv">
+            <div class="flex">
+            <button class="selectorButton" id="rockBtn"><img src="https://img.icons8.com/officel/96/000000/rock.png"/></button>
+            <button class="selectorButton" id="paperBtn"><img src="https://img.icons8.com/doodle/96/000000/paper-plane--v1.png"/></button>
+            <button class="selectorButton" id="scissorsBtn"><img src="https://img.icons8.com/officel/96/000000/scissors.png"/></button></div>
+        </div>
+        </div>
     <script src="./rps.js"></script>
 </body>
+<footer>
+    <p>Created by Mitchell Mudd. Icons from icons8</p>
+    <a class="icon-link" target="_blank" href="https://icons8.com/icon/4ZZatudpTru2/rock">Rock</a>
+    <a class="icon-link" target="_blank" href="https://icons8.com/icon/80664/paper-plane">Paper Plane</a>
+    <a class="icon-link" target="_blank" href="https://icons8.com/icon/KNPya5Iv5KUk/scissors">Scissors</a>
+</footer>
 
 </html>
