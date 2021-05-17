@@ -62,6 +62,7 @@ function playRound(playerSelection, computerSelection) {
 
     if (playerSelection === computerSelection) {
         console.log('You tied!');
+        updateScores();
         return;
     }
     switch (playerSelection) {
@@ -72,7 +73,7 @@ function playRound(playerSelection, computerSelection) {
                 break;
             } else {
                 console.log('computer won');
-                computerScore ++;
+                computerScore++;
                 break
             }
         case 'paper':
@@ -82,7 +83,7 @@ function playRound(playerSelection, computerSelection) {
                 break;
             } else {
                 console.log('computer won');
-                computerScore ++;
+                computerScore++;
                 break
             }
         case 'scissors':
@@ -92,7 +93,7 @@ function playRound(playerSelection, computerSelection) {
                 break;
             } else {
                 console.log('computer won');
-                computerScore ++;
+                computerScore++;
                 break
             }
         default:
@@ -101,46 +102,43 @@ function playRound(playerSelection, computerSelection) {
     updateScores();
 }
 
+// 2 variables below are for checking if the score has changed and updating the displayed message.
+let previousPlayerScore = 0;
+let previousComputerScore = 0;
+const outputMessage = document.querySelector('.playGameDiv p#outputMessage');
+outputMessage.textContent = 'No points on the board yet!'
 function updateScores() {
-    const playerScoreCard = document.querySelector('.playGameDiv p#playerScore')
-    playerScoreCard.textContent = `Player Score: ${playerScore}`
-    
-    const computerScoreCard = document.querySelector('.playGameDiv p#computerScore')
-    computerScoreCard.textContent = `Computer Score: ${computerScore}`
+    if (previousPlayerScore === playerScore && previousComputerScore === computerScore) {
+        outputMessage.textContent = '*gasp* You tied!';
+    } else if (playerScore > previousPlayerScore) {
+        outputMessage.textContent = 'You scored a point!';
+    } else if (computerScore > previousComputerScore) {
+        outputMessage.textContent = 'Computer scored a point!';
+    }
+
+    // Update playerScoreCard
+    const playerScoreCard = document.querySelector('.playGameDiv p#playerScore');
+    playerScoreCard.textContent = `Player Score: ${playerScore}`;
+    // Update computerScoreCard
+    const computerScoreCard = document.querySelector('.playGameDiv p#computerScore');
+    computerScoreCard.textContent = `Computer Score: ${computerScore}`;
+
+    // Gra
+    previousPlayerScore = playerScore;
+    previousComputerScore = computerScore
+    isGameFinished();
 }
-
-
 
 function isGameFinished() {
     if (playerScore === 5) {
-
+        outputMessage.textContent = 'You won the game!'
+        resetButton.click();
+        return;
+    } else if (computerScore === 5) {
+        outputMessage.textContent = 'Sorry, computer won the game! :(';
+        resetButton.click();
+        return;
+    } else {
+        return;
     }
-    } 
-
-/* function called game(): calls function named playRound 5 times.
-also keeps score and declares a winner.
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-
-    for (i = 0; i < 5; i++) {
-        let round = playRound();
-
-        // If user cancels the game the if statement will run
-        if (round === 0) {
-            continue;
-        } else if (round === 1) {
-            playerScore += 1;
-        } else {
-            computerScore += 1;
-        }
-    }
-    if (playerScore === computerScore) {
-        return alert('You tied! haha')
-    }
-    return playerScore > computerScore ? alert('Player won the game!') : alert('Computer won the game!');
-} */
-
-
-
-
+}

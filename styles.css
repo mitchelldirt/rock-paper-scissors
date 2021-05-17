@@ -38,3 +38,11 @@ footer {
 .icon-link {
     margin-left: 1%;
 }
+
+.centerSplash {
+    display: block;
+    position: relative;
+    top: 50%;
+    text-align: center;
+    border: 5px solid black;
+  }
