@@ -1,2 +1,2 @@
 # rock-paper-scissors
-This is a barebones rock paper scissors game. The project will be updated in the future to include a GUI.
+This is my take on rock paper scissors. Definitely helped me in learning about how to use DOM manipulation and how to format functions to work with each other.
