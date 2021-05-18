@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
+
 body {
   background-color: lightpink;
 }
@@ -36,6 +38,7 @@ img {
 }
 
 footer {
+  font-family: "Josefin Sans", sans-serif;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -112,7 +115,19 @@ button {
   margin-left: 1%;
 }
 
+#reset {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1em;
+  margin-top: 1%;
+}
+
+#outputMessage {
+  font-family: "Josefin Sans", sans-serif;
+  font-style: italic;
+}
+
 .scoreCard {
+  font-family: "Josefin Sans", sans-serif;
   font-size: 1em;
 }
 
@@ -130,8 +145,14 @@ button {
 
 .centerSplash {
   text-align: center;
-  border: 5px solid black;
   padding: 1%;
+}
+
+#splashBody {
+  display: flex;
+  height: 95%;
+  align-items: center;
+  justify-content: center;
 }
 
 #playGameDiv {
@@ -158,19 +179,19 @@ button {
 
 @media screen and (min-width: 700px) {
   #playGameDiv {
-    margin-top: 20%;
+    margin-top: 25%;
   }
 }
 
 @media screen and (min-width: 800px) {
   #playGameDiv {
-    margin-top: 15%;
+    margin-top: 20%;
   }
 }
 
 @media screen and (min-width: 1000px) {
   #playGameDiv {
-    margin-top: 10%;
+    margin-top: 15%;
   }
 }
 
