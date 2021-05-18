@@ -6,10 +6,10 @@ let playerScore = 0;
 let computerScore = 0;
 
 const playerScoreCard = document.querySelector('.playGameDiv p#playerScore')
-playerScoreCard.textContent = `Player Score: ${playerScore}`
+playerScoreCard.textContent = `PLAYER SCORE: ${playerScore}`
 
 const computerScoreCard = document.querySelector('.playGameDiv p#computerScore')
-computerScoreCard.textContent = `Computer Score: ${computerScore}`
+computerScoreCard.textContent = `COMPUTER SCORE: ${computerScore}`
 
 const rockButton = document.querySelector('#rockBtn')
 rockButton.addEventListener('click', () => {
@@ -29,13 +29,21 @@ scissorsButton.addEventListener('click', () => {
     playRound();
 })
 
+// Reset the score using the button. Checks if one party has won the game to display the correct message.
 const resetButton = document.querySelector('#reset')
 resetButton.addEventListener('click', () => {
+    if (playerScore === 5 || computerScore === 5) {
+        playerScore = 0;
+        computerScore = 0;
+        updateScores();
+        return;
+    } else {
+        outputMessage.textContent = 'No points on the board yet!'
+    }
     playerScore = 0;
     computerScore = 0;
     updateScores();
 })
-
 
 /*********************************************BELOW IS BACK END CODE***************************************************/
 
@@ -116,19 +124,20 @@ function updateScores() {
         outputMessage.textContent = 'Computer scored a point!';
     }
 
-    // Update playerScoreCard
+    // Update playerScoreCard.
     const playerScoreCard = document.querySelector('.playGameDiv p#playerScore');
-    playerScoreCard.textContent = `Player Score: ${playerScore}`;
-    // Update computerScoreCard
+    playerScoreCard.textContent = `PLAYER SCORE: ${playerScore}`;
+    // Update computerScoreCard.
     const computerScoreCard = document.querySelector('.playGameDiv p#computerScore');
-    computerScoreCard.textContent = `Computer Score: ${computerScore}`;
+    computerScoreCard.textContent = `COMPUTER SCORE: ${computerScore}`;
 
-    // Gra
+    // Updates the previous scores so that they can be used in the above code block.
     previousPlayerScore = playerScore;
     previousComputerScore = computerScore
     isGameFinished();
 }
 
+// Game ends when either player or computer reaches 5 points.
 function isGameFinished() {
     if (playerScore === 5) {
         outputMessage.textContent = 'You won the game!'
