@@ -26,6 +26,12 @@ footer {
 button {
   border: 3px solid #06303a;
   padding: 1%;
+  cursor: pointer;
+}
+
+button:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 .playGameDiv {
