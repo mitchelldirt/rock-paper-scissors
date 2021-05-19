@@ -9,6 +9,18 @@ img {
   height: 70px;
 }
 
+.glowing-border {
+  border: 2px solid #dadada;
+  border-radius: 7px;
+  outline: none;
+  border-color: #3b9ef0;
+  box-shadow: 0 0 10px #3b9ef0;
+}
+
+#computerScore {
+  color: #3b9ef0;
+}
+
 footer {
   font-family: "Josefin Sans", sans-serif;
   position: absolute;

@@ -50,11 +50,22 @@ resetButton.addEventListener('click', () => {
 // function named computerSelection: Will randomly return rock, paper, or scissors.
 // Uses Math.floor() to round down and Math.random() to select a random item in the list `rps`.
 function computerSelectionFunc() {
+    // set the border color back to black on the three buttons choices.
+    rockButton.setAttribute('style', 'border: 3px solid #06303a')
+    paperButton.setAttribute('style', 'border: 3px solid #06303a')
+    scissorsButton.setAttribute('style', 'border: 3px solid #06303a')
     let rps = ['rock', 'paper', 'scissors'];
     let selection = rps[Math.floor(Math.random() * rps.length)];
+    // Displays what the computer chooses by changing the border color of one of the three button choices.
+    if (selection === 'rock') {
+        rockButton.setAttribute('style', 'border: 3px solid #3b9ef0')
+    } else if (selection === 'paper') {
+        paperButton.setAttribute('style', 'border: 3px solid #3b9ef0')
+    } else {
+        scissorsButton.setAttribute('style', 'border: 3px solid #3b9ef0')
+    }
     return selection;
-};
-
+}
 /* function named playRound: Takes two parameters `playerSelection` and `computerSelection`
 then returns a string letting play know if they won or lost (console.log) */
 function playRound(playerSelection, computerSelection) {
