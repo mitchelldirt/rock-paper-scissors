@@ -32,6 +32,10 @@ scissorsButton.addEventListener('click', () => {
 // Reset the score using the button. Checks if one party has won the game to display the correct message.
 const resetButton = document.querySelector('#reset')
 resetButton.addEventListener('click', () => {
+    // Change borders of selector buttons back to black so that it doesn't look like the computer has picked something.
+    rockButton.setAttribute('style', 'border: 3px solid #06303a')
+    paperButton.setAttribute('style', 'border: 3px solid #06303a')
+    scissorsButton.setAttribute('style', 'border: 3px solid #06303a')
     if (playerScore === 5 || computerScore === 5) {
         playerScore = 0;
         computerScore = 0;
